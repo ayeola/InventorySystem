@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.inventory.system.model.AuditTrail" table="audit_trail" catalog="collegestudents" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="admin" class="com.inventory.system.model.Admin" fetch="select">
+            <column name="admin_id" />
+        </many-to-one>
+        <property name="source" type="string">
+            <column name="source" length="45" />
+        </property>
+        <property name="actionPerformed" type="string">
+            <column name="action_performed" length="45" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="45" />
+        </property>
+        <property name="trailDate" type="timestamp">
+            <column name="trail_date" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

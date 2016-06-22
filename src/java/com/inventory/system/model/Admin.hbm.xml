@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="collegestudents" name="com.inventory.system.model.Admin" optimistic-lock="version" table="admin">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.inventory.system.model.NonTeachingStaff" fetch="select" name="nonteachingstaff">
+      <column name="NonTeachingStaff_id"/>
+    </many-to-one>
+    <many-to-one class="com.inventory.system.model.Teacher" fetch="select" name="teacher">
+      <column name="teacher_id"/>
+    </many-to-one>
+    <property name="username" type="string">
+      <column length="45" name="username" unique="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="65535" name="password"/>
+    </property>
+    <property name="category" type="string">
+      <column length="45" name="category"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="date_created"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="auditTrails" table="audit_trail">
+      <key>
+        <column name="admin_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.AuditTrail"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="messageses" table="messages">
+      <key>
+        <column name="admin_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Messages"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="roles" table="role">
+      <key>
+        <column name="admin_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Role"/>
+    </set>
+  </class>
+</hibernate-mapping>

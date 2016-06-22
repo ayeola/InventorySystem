@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="collegestudents" name="com.inventory.system.model.Subjects" optimistic-lock="version" table="subjects">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.inventory.system.model.AcademicClass" fetch="select" name="academicclass">
+      <column name="AcademicClass_id"/>
+    </many-to-one>
+    <many-to-one class="com.inventory.system.model.Teacher" fetch="select" name="teacher">
+      <column name="teacher_id"/>
+    </many-to-one>
+    <property name="subjectCode" type="string">
+      <column length="45" name="subject_code" unique="true"/>
+    </property>
+    <property name="subjectName" type="string">
+      <column length="45" name="subject_name"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="date_created"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="studentSubjectses" table="student_subjects">
+      <key>
+        <column name="subjects_id" not-null="true"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.StudentSubjects"/>
+    </set>
+  </class>
+</hibernate-mapping>

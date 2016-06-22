@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="collegestudents" name="com.inventory.system.model.StudentRegistration" optimistic-lock="version" table="student_registration">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.inventory.system.model.AcademicClass" fetch="select" name="academicclass">
+      <column name="academicclass_id"/>
+    </many-to-one>
+    <property name="registrationNumber" type="string">
+      <column length="45" name="registration_number" unique="true"/>
+    </property>
+    <property name="firstName" type="string">
+      <column length="45" name="first_name"/>
+    </property>
+    <property name="middleName" type="string">
+      <column length="45" name="middle_name"/>
+    </property>
+    <property name="lastName" type="string">
+      <column length="45" name="last_name"/>
+    </property>
+    <property name="email" type="string">
+      <column length="45" name="email"/>
+    </property>
+    <property name="phoneNumber" type="string">
+      <column length="45" name="phone_number"/>
+    </property>
+    <property name="registeredDate" type="timestamp">
+      <column length="19" name="registered_date"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="studentses" table="students">
+      <key>
+        <column name="student_registration_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Students"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="guidians" table="guidian">
+      <key>
+        <column name="student_registration_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Guidian"/>
+    </set>
+  </class>
+</hibernate-mapping>

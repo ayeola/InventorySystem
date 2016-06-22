@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="collegestudents" name="com.inventory.system.model.Teacher" optimistic-lock="version" table="teacher">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.inventory.system.model.AcademicClass" fetch="select" name="academicclass">
+      <column name="AcademicClass_id"/>
+    </many-to-one>
+    <many-to-one class="com.inventory.system.model.LocalGovernment" fetch="select" name="localGovernment">
+      <column name="local_government_id"/>
+    </many-to-one>
+    <property name="registrationNumber" type="string">
+      <column length="45" name="registration_number" unique="true"/>
+    </property>
+    <property name="title" type="string">
+      <column length="45" name="title"/>
+    </property>
+    <property name="firstName" type="string">
+      <column length="45" name="first_name"/>
+    </property>
+    <property name="middleName" type="string">
+      <column length="45" name="middle_name"/>
+    </property>
+    <property name="lastName" type="string">
+      <column length="45" name="last_name"/>
+    </property>
+    <property name="email" type="string">
+      <column length="45" name="email" unique="true"/>
+    </property>
+    <property name="phoneNumber" type="string">
+      <column length="45" name="phone_number" unique="true"/>
+    </property>
+    <property name="placeOfBirth" type="string">
+      <column length="45" name="place_of_birth"/>
+    </property>
+    <property name="gender" type="string">
+      <column length="45" name="gender"/>
+    </property>
+    <property name="dateOfBirth" type="date">
+      <column length="45" name="date_of_birth"/>
+    </property>
+    <property name="registeredDate" type="date">
+      <column length="45" name="registered_date"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="subjectses" table="subjects">
+      <key>
+        <column name="teacher_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Subjects"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="admins" table="admin">
+      <key>
+        <column name="teacher_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Admin"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="collegestudents" name="com.inventory.system.model.AcademicClass" optimistic-lock="version" table="academicclass">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="className" type="string">
+      <column length="45" name="class_name"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="studentRegistrations" table="student_registration">
+      <key>
+        <column name="academicclass_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.StudentRegistration"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="teachers" table="teacher">
+      <key>
+        <column name="AcademicClass_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Teacher"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="studentses" table="students">
+      <key>
+        <column name="AcademicClass_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Students"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="subjectses" table="subjects">
+      <key>
+        <column name="AcademicClass_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Subjects"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="studentSubjectses" table="student_subjects">
+      <key>
+        <column name="AcademicClass_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.StudentSubjects"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="paymentses" table="payments">
+      <key>
+        <column name="AcademicClass_id"/>
+      </key>
+      <one-to-many class="com.inventory.system.model.Payments"/>
+    </set>
+  </class>
+</hibernate-mapping>

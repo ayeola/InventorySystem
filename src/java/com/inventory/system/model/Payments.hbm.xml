@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="collegestudents" name="com.inventory.system.model.Payments" optimistic-lock="version" table="payments">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.inventory.system.model.AcademicClass" fetch="select" name="academicclass">
+      <column name="AcademicClass_id"/>
+    </many-to-one>
+    <many-to-one class="com.inventory.system.model.Accounts" fetch="select" name="accounts">
+      <column name="accounts_id"/>
+    </many-to-one>
+    <property name="amount" type="big_decimal">
+      <column name="amount"/>
+    </property>
+    <property name="paymentReference" type="string">
+      <column length="45" name="payment_reference"/>
+    </property>
+    <property name="paymentDate" type="timestamp">
+      <column length="19" name="payment_date"/>
+    </property>
+    <property name="academicSession" type="string">
+      <column length="100" name="academic_session"/>
+    </property>
+    <property name="term" type="string">
+      <column length="45" name="term"/>
+    </property>
+  </class>
+</hibernate-mapping>

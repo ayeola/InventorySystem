@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="collegestudents"/>
+  <table-filter match-name="payments"/>
+  <table-filter match-name="academicclass"/>
+  <table-filter match-name="nonteachingstaff"/>
+  <table-filter match-name="messages"/>
+  <table-filter match-name="guidian"/>
+  <table-filter match-name="teacher"/>
+  <table-filter match-name="role"/>
+  <table-filter match-name="students"/>
+  <table-filter match-name="student_registration"/>
+  <table-filter match-name="student_subjects"/>
+  <table-filter match-name="admin"/>
+  <table-filter match-name="accounts"/>
+  <table-filter match-name="state"/>
+  <table-filter match-name="local_government"/>
+  <table-filter match-name="subjects"/>
+  <table-filter match-name="audit_trail"/>
+</hibernate-reverse-engineering>

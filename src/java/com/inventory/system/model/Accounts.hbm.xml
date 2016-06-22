@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.inventory.system.model.Accounts" table="accounts" catalog="collegestudents" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="students" class="com.inventory.system.model.Students" fetch="select">
+            <column name="students_id" />
+        </many-to-one>
+        <property name="accountNumber" type="string">
+            <column name="account_number" length="45" unique="true" />
+        </property>
+        <property name="accountName" type="string">
+            <column name="account_name" length="45" />
+        </property>
+        <property name="accountType" type="string">
+            <column name="account_type" length="45" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="19" />
+        </property>
+        <set name="paymentses" table="payments" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="accounts_id" />
+            </key>
+            <one-to-many class="com.inventory.system.model.Payments" />
+        </set>
+    </class>
+</hibernate-mapping>

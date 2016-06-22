@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 11, 2016 9:48:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="collegestudents" name="com.inventory.system.model.StudentSubjects" optimistic-lock="version" table="student_subjects">
+    <composite-id class="com.inventory.system.model.StudentSubjectsId" name="id">
+      <key-property name="studentsId" type="int">
+        <column name="students_id"/>
+      </key-property>
+      <key-property name="subjectsId" type="int">
+        <column name="subjects_id"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.inventory.system.model.AcademicClass" fetch="select" name="academicclass">
+      <column name="AcademicClass_id"/>
+    </many-to-one>
+    <many-to-one class="com.inventory.system.model.Students" fetch="select" insert="false" name="students" update="false">
+      <column name="students_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.inventory.system.model.Subjects" fetch="select" insert="false" name="subjects" update="false">
+      <column name="subjects_id" not-null="true"/>
+    </many-to-one>
+    <property name="firstTestScore" type="java.lang.Integer">
+      <column name="first_test_score"/>
+    </property>
+    <property name="secondTestScore" type="java.lang.Integer">
+      <column name="second_test_score"/>
+    </property>
+    <property name="thirdTestScore" type="java.lang.Integer">
+      <column name="third_test_score"/>
+    </property>
+    <property name="fourthTestScore" type="java.lang.Integer">
+      <column name="fourth_test_score"/>
+    </property>
+    <property name="examScore" type="java.lang.Integer">
+      <column name="exam_score"/>
+    </property>
+    <property name="totalScore" type="java.lang.Integer">
+      <column name="total_score"/>
+    </property>
+    <property name="percentage" type="string">
+      <column length="45" name="percentage"/>
+    </property>
+    <property name="session" type="string">
+      <column length="45" name="session"/>
+    </property>
+    <property name="term" type="string">
+      <column length="45" name="term"/>
+    </property>
+    <property name="remark" type="string">
+      <column length="45" name="remark"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="date_created"/>
+    </property>
+  </class>
+</hibernate-mapping>

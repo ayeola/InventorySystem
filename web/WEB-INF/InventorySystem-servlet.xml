@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+">
+
+    <context:component-scan base-package="com.inventory.system.controller"/>
+    <context:component-scan base-package="com.inventory.system.dao"/>
+    <context:component-scan base-package="com.inventory.system.service"/>
+    <context:component-scan base-package="com.inventory.system.validation"/>
+    <context:component-scan base-package="com.inventory.system.model"/>
+    <mvc:annotation-driven />
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+    
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/css/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/font-awesome/css/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/font-awesome/fonts/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/fonts/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/bootstrap/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/dataTables" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/flot/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/metisMenu/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/morris/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/pace/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/social-buttons/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/plugins/timeline" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/scripts/" />
+    <mvc:resources mapping="/bs-siminta-admin/**" location="/bs-siminta-admin/assets/img/" />
+
+   
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+    
+    <bean id="adminValidator" class="com.inventory.system.validation.AdminValidator">
+        <property name="location" value="message.properties"/>
+    </bean>
+    <bean id="ntsValidator" class="com.inventory.system.validation.NTSValidator">
+        <property name="location" value="message.properties"/>
+    </bean>
+    <bean id="teacherValidator" class="com.inventory.system.validation.TeacherValidator">
+        <property name="location" value="message.properties"/>
+    </bean>
+
+</beans>
